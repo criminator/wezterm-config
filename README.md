@@ -1,4 +1,4 @@
 # Wezterm Setup
 To configurate:
-- change file name to **.wezterm.lua** and add to your home directory
+- add **.wezterm.lua** to your home directory
 - done.

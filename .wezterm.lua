@@ -4,6 +4,8 @@ local config = wezterm.config_builder()
 config.initial_cols = 120
 config.initial_rows = 28
 
+config.default_prog = { "pwsh.exe", "-NoLogo" }
+
 config.font_size = 11
 -- config.color_scheme = "Afterglow"
 -- config.color_scheme = "Ashes (dark) (terminal.sexy)"
@@ -13,18 +15,19 @@ config.font_size = 11
 -- config.color_scheme = "Darkside"
 config.color_scheme = "Jellybeans"
 
--- config.default_prog = { "wsl.exe", "-d", "Ubuntu", "--", "tmux" }
-config.default_prog = {
-	"wsl.exe",
-	"-d",
-	"Ubuntu",
-	"--",
-	"sh",
-	"-c",
-	"cd ~ && tmux",
+config.launch_menu = {
+	{
+		label = "WSL (Ubuntu)",
+		args = { "wsl.exe", "-d", "Ubuntu", "--", "sh", "-c", "cd ~ && tmux" },
+	},
+	{
+		label = "Default (Windows)",
+		args = { "pwsh.exe", "-NoLogo" },
+	},
 }
 
 config.font = wezterm.font("Cascadia Code PL")
+-- config.font = wezterm.font("JetBrains Mono")
 --
 -- -- Modern OpenType feature syntax
 -- config.font = wezterm.font_with_fallback({

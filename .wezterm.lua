@@ -109,10 +109,11 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	config.font_size = 11
 	config.default_prog = { "pwsh.exe", "-NoLogo" }
 
-	-- Cascadia Code PL with full OpenType features
+	-- CaskadiaCove Nerd Font Mono with full OpenType features
 	config.font = wezterm.font_with_fallback({
 		{
-			family = "Cascadia Code PL",
+			family = "CaskaydiaCove Nerd Font Mono",
+			-- family = "Iosevka Nerd Font Mono",
 			harfbuzz_features = { "calt=1", "liga=1", "ss01=1", "ss02=1", "ss03=1", "ss20=1" },
 		},
 	})
@@ -121,7 +122,7 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 			italic = true,
 			font = wezterm.font_with_fallback({
 				{
-					family = "Cascadia Code PL",
+					family = "CaskaydiaCove Nerd Font Mono",
 					style = "Italic",
 					harfbuzz_features = { "calt=1", "liga=1", "ss01=1", "ss02=1", "ss03=1", "ss20=1" },
 				},
@@ -136,6 +137,16 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	)
 	table.insert(config.launch_menu, { label = "Default (Windows)", args = { "pwsh.exe", "-NoLogo" } })
 	table.insert(config.launch_menu, { label = "PowerShell Legacy", args = { "powershell.exe", "-NoLogo" } })
+	table.insert(config.launch_menu, {
+		label = "Developer Build Tools Console",
+		args = {
+			"pwsh.exe",
+			"-NoLogo",
+			"-NoExit",
+			"-Command",
+			'& "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\Tools\\Launch-VsDevShell.ps1"; cd ~',
+		},
+	})
 
 	-- Auto-detect installed Visual Studio versions
 	for _, vsvers in ipairs(wezterm.glob("Microsoft Visual Studio/20*", "C:/Program Files (x86)")) do

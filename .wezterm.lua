@@ -107,13 +107,15 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	end
 
 	config.font_size = 11
-	config.default_prog = {
-		"pwsh.exe",
-		"-NoLogo",
-		"-NoExit",
-		"-Command",
-		'& "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\Tools\\Launch-VsDevShell.ps1"; cd ~',
-	}
+	config.default_prog = { "pwsh.exe", "-NoLogo" }
+	-- Swap with this if you want to use vs developer console as default
+	-- config.default_prog = {
+	-- 	"pwsh.exe",
+	-- 	"-NoLogo",
+	-- 	"-NoExit",
+	-- 	"-Command",
+	-- 	'& "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\Tools\\Launch-VsDevShell.ps1"; cd ~',
+	-- }
 
 	-- CaskadiaCove Nerd Font Mono with full OpenType features
 	config.font = wezterm.font_with_fallback({

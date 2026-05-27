@@ -28,6 +28,29 @@ config.check_for_updates = false
 -- config.color_scheme = "Builtin Pastel Dark"
 -- config.color_scheme = "Darkside"
 -- config.color_scheme = "Jellybeans"
+-- ─── Theme & Cursor Configuration ──────────────────────────────────────────
+
+-- Option 1: High-contrast pastel (Highly Recommended)
+config.color_scheme = "Catppuccin Mocha"
+
+-- Option 2: Cyberpunk / deep blue (Uncomment this if you prefer it)
+-- config.color_scheme = "Tokyo Night Storm"
+
+-- Make the cursor stark white and clearly visible
+config.colors = {
+	-- Override the background to a much deeper, ink-like black
+	background = "#11111b", -- Official Catppuccin 'Crust' (Deep pitch black)
+
+	cursor_bg = "#FFFFFF",
+	cursor_fg = "#000000", -- Text color inside the cursor block
+	cursor_border = "#FFFFFF",
+}
+
+-- Force the cursor to stay a solid block and blink smoothly
+config.default_cursor_style = "BlinkingBlock"
+config.cursor_blink_ease_in = "EaseIn"
+config.cursor_blink_ease_out = "EaseOut"
+config.cursor_blink_rate = 500
 config.inactive_pane_hsb = { hue = 1.0, saturation = 1.0, brightness = 1.0 }
 config.set_environment_variables = {}
 config.launch_menu = {}
@@ -36,35 +59,35 @@ config.launch_menu = {}
 -- Leader is CTRL-A (tmux-style). Additional CTRL|SHIFT bindings for pane
 -- splitting and navigation are also available without the leader.
 
-config.leader = { key = "a", mods = "CTRL" }
-config.disable_default_key_bindings = true
+-- config.leader = { key = "a", mods = "CTRL" }
+-- config.disable_default_key_bindings = true
 
 config.keys = {
-	-- Pass CTRL-A through when pressed twice
-	{ key = "a", mods = "LEADER|CTRL", action = wezterm.action({ SendString = "\x01" }) },
-
-	-- Pane splitting (leader style)
-	{ key = "-", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ key = "\\", mods = "LEADER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	-- 	-- Pass CTRL-A through when pressed twice
+	-- 	{ key = "a", mods = "LEADER|CTRL", action = wezterm.action({ SendString = "\x01" }) },
+	--
+	-- 	-- Pane splitting (leader style)
+	-- 	{ key = "-", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	-- 	{ key = "\\", mods = "LEADER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 
 	-- Pane splitting (CTRL|SHIFT style — no leader needed)
 	{ key = "_", mods = "CTRL|SHIFT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	{ key = "|", mods = "CTRL|SHIFT", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 
-	-- Zoom / close
-	{ key = "z", mods = "LEADER", action = "TogglePaneZoomState" },
-	{ key = "x", mods = "LEADER", action = wezterm.action({ CloseCurrentPane = { confirm = true } }) },
-	{ key = "&", mods = "LEADER|SHIFT", action = wezterm.action({ CloseCurrentTab = { confirm = true } }) },
+	-- -- Zoom / close
+	-- { key = "z", mods = "LEADER", action = "TogglePaneZoomState" },
+	-- { key = "x", mods = "LEADER", action = wezterm.action({ CloseCurrentPane = { confirm = true } }) },
+	-- { key = "&", mods = "LEADER|SHIFT", action = wezterm.action({ CloseCurrentTab = { confirm = true } }) },
 
 	-- New tab / window
-	{ key = "c", mods = "LEADER", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) },
+	-- { key = "c", mods = "LEADER", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) },
 	{ key = "N", mods = "CTRL|SHIFT", action = wezterm.action.SpawnWindow },
 
 	-- Pane navigation (leader)
-	{ key = "h", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Left" }) },
-	{ key = "j", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
-	{ key = "k", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
-	{ key = "l", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Right" }) },
+	-- { key = "h", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Left" }) },
+	-- { key = "j", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
+	-- { key = "k", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
+	-- { key = "l", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Right" }) },
 
 	-- Pane navigation (CTRL|SHIFT — no leader needed)
 	{ key = "H", mods = "CTRL|SHIFT", action = wezterm.action.ActivatePaneDirection("Left") },
@@ -73,21 +96,21 @@ config.keys = {
 	{ key = "L", mods = "CTRL|SHIFT", action = wezterm.action.ActivatePaneDirection("Right") },
 
 	-- Pane resize (leader + shift)
-	{ key = "H", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Left", 5 } }) },
-	{ key = "J", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Down", 5 } }) },
-	{ key = "K", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Up", 5 } }) },
-	{ key = "L", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Right", 5 } }) },
+	-- { key = "H", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Left", 5 } }) },
+	-- { key = "J", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Down", 5 } }) },
+	-- { key = "K", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Up", 5 } }) },
+	-- { key = "L", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Right", 5 } }) },
 
 	-- Tab switching
-	{ key = "1", mods = "LEADER", action = wezterm.action({ ActivateTab = 0 }) },
-	{ key = "2", mods = "LEADER", action = wezterm.action({ ActivateTab = 1 }) },
-	{ key = "3", mods = "LEADER", action = wezterm.action({ ActivateTab = 2 }) },
-	{ key = "4", mods = "LEADER", action = wezterm.action({ ActivateTab = 3 }) },
-	{ key = "5", mods = "LEADER", action = wezterm.action({ ActivateTab = 4 }) },
-	{ key = "6", mods = "LEADER", action = wezterm.action({ ActivateTab = 5 }) },
-	{ key = "7", mods = "LEADER", action = wezterm.action({ ActivateTab = 6 }) },
-	{ key = "8", mods = "LEADER", action = wezterm.action({ ActivateTab = 7 }) },
-	{ key = "9", mods = "LEADER", action = wezterm.action({ ActivateTab = 8 }) },
+	-- { key = "1", mods = "LEADER", action = wezterm.action({ ActivateTab = 0 }) },
+	-- { key = "2", mods = "LEADER", action = wezterm.action({ ActivateTab = 1 }) },
+	-- { key = "3", mods = "LEADER", action = wezterm.action({ ActivateTab = 2 }) },
+	-- { key = "4", mods = "LEADER", action = wezterm.action({ ActivateTab = 3 }) },
+	-- { key = "5", mods = "LEADER", action = wezterm.action({ ActivateTab = 4 }) },
+	-- { key = "6", mods = "LEADER", action = wezterm.action({ ActivateTab = 5 }) },
+	-- { key = "7", mods = "LEADER", action = wezterm.action({ ActivateTab = 6 }) },
+	-- { key = "8", mods = "LEADER", action = wezterm.action({ ActivateTab = 7 }) },
+	-- { key = "9", mods = "LEADER", action = wezterm.action({ ActivateTab = 8 }) },
 
 	-- Fullscreen, clipboard, font size
 	{ key = "n", mods = "SHIFT|CTRL", action = "ToggleFullScreen" },

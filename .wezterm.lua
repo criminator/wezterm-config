@@ -16,6 +16,7 @@ end
 
 local config = wezterm.config_builder()
 
+config.force_reverse_video_cursor = true
 config.initial_cols = 120
 config.initial_rows = 28
 config.audible_bell = "Disabled"
@@ -209,4 +210,6 @@ end
 
 -- ─────────────────────────────────────────────────────────────────────────────
 
+-- Mouse click opening window glitch
+config.swallow_mouse_click_on_window_focus = true
 return config

@@ -16,7 +16,21 @@ end
 
 local config = wezterm.config_builder()
 
-config.force_reverse_video_cursor = true
+config.window_background_image = 'C:\\Users\\Jackson\\wallpaperwezterm.jpg'
+
+config.window_background_image_hsb = {
+  -- Darken the background image by reducing it to 1/3rd
+  brightness = 0.2,
+
+  -- You can adjust the hue by scaling its value.
+  -- a multiplier of 1.0 leaves the value unchanged.
+  hue = 1.0,
+
+  -- You can adjust the saturation also.
+  saturation = 1.0,
+}
+
+-- config.force_reverse_video_cursor = true
 config.initial_cols = 120
 config.initial_rows = 28
 config.audible_bell = "Disabled"
@@ -130,7 +144,7 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 		config.prefer_egl = true
 	end
 
-	config.font_size = 11
+	config.font_size = 13
 	config.default_prog = { "pwsh.exe", "-NoLogo" }
 	-- Swap with this if you want to use vs developer console as default
 	-- config.default_prog = {
@@ -144,9 +158,10 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	-- CaskadiaCove Nerd Font Mono with full OpenType features
 	config.font = wezterm.font_with_fallback({
 		{
-			family = "CaskaydiaCove Nerd Font Mono",
+			-- family = "CaskaydiaCove Nerd Font Mono",
+      family = "Consolas",
 			-- family = "Iosevka Nerd Font Mono",
-			harfbuzz_features = { "calt=1", "liga=1", "ss01=1", "ss02=1", "ss03=1", "ss20=1" },
+			-- harfbuzz_features = { "calt=1", "liga=1", "ss01=1", "ss02=1", "ss03=1", "ss20=1" },
 		},
 	})
 	config.font_rules = {
@@ -154,9 +169,10 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 			italic = true,
 			font = wezterm.font_with_fallback({
 				{
-					family = "CaskaydiaCove Nerd Font Mono",
-					style = "Italic",
-					harfbuzz_features = { "calt=1", "liga=1", "ss01=1", "ss02=1", "ss03=1", "ss20=1" },
+					-- family = "CaskaydiaCove Nerd Font Mono",
+          family = "Consolas"
+					-- style = "Italic",
+					-- harfbuzz_features = { "calt=1", "liga=1", "ss01=1", "ss02=1", "ss03=1", "ss20=1" },
 				},
 			}),
 		},
